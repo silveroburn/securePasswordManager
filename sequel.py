@@ -14,6 +14,7 @@ cursor = connection.cursor()
 
 def signup(username, password, email):
     cursor.execute('select * from users where username')
+    print("this is after I created the branch")
 
 def checker(username, curPassword):
     cursor.execute('select * from users where username = %s', (username))
