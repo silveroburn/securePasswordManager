@@ -13,7 +13,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'sameer2020sameer123@gmail.com'
 
 mail = Mail(app)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/mail', methods=['GET', 'POST'])
 def send_email():
     if request.method == "POST":
         msg = Message(
@@ -27,8 +27,8 @@ def send_email():
 
 @app.route('/trigger', methods=['GET'])
 def trigger_email():
-    response = requests.post('http://127.0.0.1:5000/')
+    response = requests.post('http://127.0.0.1:5000/mail')
     return f'Triggered POST request. Response: {response.text}'
 
-if __name__ == "__main__":
+if __name__ == "_main_":
     app.run(debug=True)

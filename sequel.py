@@ -13,8 +13,21 @@ print('is connected now')
 cursor = connection.cursor()
 
 def signup(username, password, email):
-    cursor.execute('select * from users where username')
-    print("this is after I created the branch")
+    if (password == None):
+        print("Password required")
+        return -2
+    elif (username == None):
+        print("username required")
+        return -2
+    elif (email == None):
+        print("Email required")
+        return -2
+    cursor.execute('select * from users where username = %s', username)
+    row = cursor.fetchall()
+    if (len(row) == 1):
+        print("Username already exists")
+        return -1
+    
 
 def checker(username, curPassword):
     cursor.execute('select * from users where username = %s', (username))
@@ -50,6 +63,6 @@ def checker(username, curPassword):
             return counterValue + 1
                    
 
-print(connection)
-print(checker("sameer", "sameer"))
+# print(connection)
+# print(checker("sameer", "sameer"))
     

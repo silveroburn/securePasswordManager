@@ -43,6 +43,11 @@
     .login-container input[type="submit"]:hover {
       background-color: #45a049;
     }
+    .message {
+      margin-top: 15px;
+      text-align: center;
+      color: red; /* You can change to green for success */
+    }
   </style>
 </head>
 <body>
@@ -58,6 +63,11 @@
 
       <input type="submit" value="Login">
     </form>
+
+    <!-- Message Section -->
+    {% if message %}
+      <div class="message">{{ message }}</div>
+    {% endif %}
   </div>
 
 </body>
