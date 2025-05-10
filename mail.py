@@ -30,5 +30,5 @@ def trigger_email():
     response = requests.post('http://127.0.0.1:5000/mail')
     return f'Triggered POST request. Response: {response.text}'
 
-if __name__ == "__main__":
+if __name__ == "_main_":
     app.run(debug=True)

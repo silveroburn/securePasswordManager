@@ -1,13 +1,10 @@
 from flask import Flask, render_template, request
 from sequel import checker
 
-
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-
 def Login():
-    
     message=""
     if request.method == 'POST':
         username = request.form["username"]
@@ -26,4 +23,3 @@ def Login():
 
 if __name__ == "__main__":
     app.run(debug=True)#True,host='0.0.0.0',port=5000
-    
