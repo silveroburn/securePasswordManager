@@ -80,8 +80,6 @@ def checker(username, curPassword):
         else:
             print(5 - (counterValue + 1), " tries left")
             return counterValue + 1
-                   
-get_email('sameer')
+
 # print(connection)
 # print(checker("sameer", "sameer"))
-    
