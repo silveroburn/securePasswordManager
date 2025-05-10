@@ -1,5 +1,5 @@
 import pymysql as con
-import passcheck
+from passcheck import *
 
 connection = con.connect(
     host='metro.proxy.rlwy.net',
@@ -70,7 +70,7 @@ def checker(username, curPassword):
         connection.commit()
         return -2
     hashPassword = row[0][1]
-    if passcheck.pchecker(hashPassword, curPassword):
+    if pchecker(hashPassword, curPassword):
         print("login successfull")
         cursor.execute('update users set counter = 0 where username = %s', username)
         connection.commit()
