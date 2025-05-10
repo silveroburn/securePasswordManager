@@ -1,5 +1,6 @@
 import pymysql as con
 import passcheck
+
 connection = con.connect(
     host='metro.proxy.rlwy.net',
     port=37344,
@@ -38,7 +39,15 @@ def chkuser(username, email):
     rows = cursor.fetchall()
     if (len(rows) >= 1):
         return "Email already in use"
-
+    
+def addUser(username, email, password):
+    message = chkuser(username, email)
+    if message != None:
+        return message
+    newPass = convert(password)
+    cursor.execute('insert into users values (%s, %s, %s, %s, %s)', (username, newPass, 0, 0, email))
+    connection.commit()
+    return "User created successfully"
     
 def get_email(username):
     cursor.execute('select * from users where username = %s', username)
@@ -80,6 +89,8 @@ def checker(username, curPassword):
         else:
             print(5 - (counterValue + 1), " tries left")
             return counterValue + 1
-
+                   
+get_email('sameer')
 # print(connection)
 # print(checker("sameer", "sameer"))
+    
